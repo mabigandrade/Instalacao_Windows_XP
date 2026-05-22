@@ -35,13 +35,24 @@ Interagir com o instalador em modo texto dentro do ambiente virtualizado do Virt
 ## 📝 Entregáveis desta Etapa
 
 ### 📸 [EVIDÊNCIA]
-*Insira aqui uma captura de tela da janela do VirtualBox mostrando o desktop do Windows XP inicializado pela primeira vez com o papel de parede clássico (Bliss).*
+<img width="1919" height="1079" alt="Captura de tela 2026-05-22 111935" src="https://github.com/user-attachments/assets/98e08c4a-4b3a-4e66-ba0b-ade11c5bebbe" />
+
 
 ### ❓ [QUESTÃO 2]
 Se por engano você pressionasse uma tecla quando a VM reiniciou entre a Fase 1 e a Fase 2, o que aconteceria com o fluxo da atividade? O instalador continuaria de onde parou ou reiniciaria o processo do zero?
 
 **Sua Resposta:**
-> 
+> Se você pressionar uma tecla quando a máquina virtual reiniciar entre a Fase 1 (Modo Texto) e a Fase 2 (Interface Gráfica), o processo de instalação reiniciará do zero.
+> Por que isso acontece?
+Durante a reinicialização, o VirtualBox lê a ordem de boot configurada. Como a imagem ISO do Windows XP ainda está "inserida" no leitor de CD virtual, a máquina exibirá a clássica mensagem na tela preta:
+
+"Pressione qualquer tecla para iniciar a partir do CD..."
+
+Se você pressionar uma tecla: A VM vai ignorar o disco rígido (onde os arquivos temporários da Fase 1 foram copiados) e carregará novamente o instalador direto do CD, voltando para a tela azul de formatação e cópia de arquivos.
+
+O que fazer se isso acontecer: Você perderá o progresso e terá que repetir a Fase 1. Para corrigir, basta reiniciar a VM novamente e, desta vez, não tocar em nenhuma tecla, deixando o contador de tempo expirar.
+
+O sistema entenderá que deve passar para o próximo dispositivo da ordem de boot: o disco rígido virtual (VDI), onde a Fase 2 (exatamente aquela tela dos 39 minutos) continuará normalmente.
 
 ---
 [⬅️ Voltar para a Etapa 1](01-tarefa-pre-requisitos.md) | [Ir para a Etapa 3 ➡️](03-tarefa-pos-instalacao.md)
